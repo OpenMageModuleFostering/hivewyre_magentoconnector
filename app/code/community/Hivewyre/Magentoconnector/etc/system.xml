@@ -1,0 +1,203 @@
+<?xml version="1.0"?>
+<!--
+  /**
+ * Copyright © 2016 HiveWyre.com
+ * FileDescription: File used to configure the admin panel section
+ * @autor eduedeleon
+ */
+-->
+<config>
+  <tabs>
+    <!-- Creating the HIVEWYRE left menu section (Tab Id = "hivewyre_config") -->
+    <hivewyre_config translate="label" module="magentoconnector">
+      <label>Hivewyre</label>
+      <sort_order>1</sort_order>
+    </hivewyre_config>
+  </tabs>
+  
+  <!-- Defining sub-sections under HIVEWYRE Left Menu -->
+  <sections>  
+    
+    <!-- Hivewyre settings -->
+    <hivewyre_settings translate="label" module="magentoconnector" >
+      <label>Hivewyre Settings</label>
+      <tab>hivewyre_config</tab> <!-- Will be under "hivewyre_config" -->
+      <frontend_type>text</frontend_type>
+      <sort_order>1</sort_order>
+      <show_in_default>1</show_in_default>
+      <show_in_website>1</show_in_website>
+      <show_in_store>1</show_in_store>
+      <groups>
+
+        <!-- Configurations accordion -->
+        <general translate="label">
+          <label>Configurations</label>
+          <frontend_type>text</frontend_type>
+          <sort_order>10</sort_order>
+          <show_in_default>1</show_in_default>
+          <show_in_website>1</show_in_website>
+          <show_in_store>1</show_in_store>
+          <fields>
+            <enabled translate="label">
+              <label>Module Enabled</label>
+              <frontend_type>select</frontend_type>
+              <source_model>adminhtml/system_config_source_yesno</source_model>
+              <sort_order>10</sort_order>
+              <show_in_default>1</show_in_default>
+              <show_in_website>1</show_in_website>
+              <show_in_store>1</show_in_store>
+              <comment>Hivewyre Module Enabled?</comment>
+            </enabled>
+
+            <siteid translate="label">
+              <label>Site ID</label>
+              <frontend_type>text</frontend_type>
+              <sort_order>20</sort_order>
+              <show_in_default>1</show_in_default>
+              <show_in_website>1</show_in_website>
+              <show_in_store>1</show_in_store>
+              <comment>Site ID assigned to your domain. If you still don't have an account, click the Registeration tab below and fill the required information. If you already have an account, please click the Login tab and enter your login information to connect your site with Magento.
+              </comment>
+            </siteid>
+
+            <connected_website translate="label">
+              <label>Connected Website</label>
+              <frontend_type>text</frontend_type>
+              <sort_order>30</sort_order>
+              <show_in_default>1</show_in_default>
+              <show_in_website>1</show_in_website>
+              <show_in_store>1</show_in_store>
+            </connected_website>
+
+          </fields>
+        </general>
+
+        <!-- Hidden Html / Ajax calls -->
+        <ajaxcalls>
+            <frontend_model>magentoconnector/adminhtml_system_config_fieldset_ajaxcalls</frontend_model>
+            <sort_order>20</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>
+        </ajaxcalls>
+
+        <!-- Registration accordion -->
+        <registration translate="label">
+          <label>Registration (Create an account)</label>
+          <expanded>0</expanded>
+          <frontend_type>text</frontend_type>
+          <sort_order>30</sort_order>
+          <show_in_default>1</show_in_default>
+          <show_in_website>1</show_in_website>
+          <show_in_store>1</show_in_store>
+          <fields>
+            <email translate="label">
+              <label>E-mail</label>
+              <frontend_type>text</frontend_type>
+              <validate>validate-email</validate>
+              <sort_order>10</sort_order>
+              <show_in_default>1</show_in_default>
+              <show_in_website>1</show_in_website>
+              <show_in_store>1</show_in_store>
+            </email>
+
+            <website_name translate="label">
+              <label>Website Name</label>
+              <frontend_type>text</frontend_type>
+              <sort_order>20</sort_order>
+              <show_in_default>1</show_in_default>
+              <show_in_website>1</show_in_website>
+              <show_in_store>1</show_in_store>
+              <comment>Please enter your website URL without the www preface (ex. Hivewyre.com).</comment>
+            </website_name>
+
+            <segment translate="label">
+              <label>Segment</label>
+              <frontend_type>select</frontend_type>
+              <source_model>magentoconnector/config_segmentsdropdown</source_model>
+              <sort_order>30</sort_order>
+              <show_in_default>1</show_in_default>
+              <show_in_website>1</show_in_website>
+              <show_in_store>1</show_in_store>
+              <comment>Please select the category that best describes your site.</comment>
+            </segment>
+
+            <password translate="label">
+              <label>Password</label>
+              <frontend_type>password</frontend_type>
+              <sort_order>40</sort_order>
+              <show_in_default>1</show_in_default>
+              <show_in_website>1</show_in_website>
+              <show_in_store>1</show_in_store>
+              <comment>The password must be at least 6 characters long. <![CDATA[<button class="register" onclick="registerMerchant(); return false;" style="width: 89%; height: 30px;font-size: 16px;"> Register </button><div id="hivewyre-api-register-results"></div>]]></comment>
+            </password>
+          </fields>
+        </registration>
+
+        <!-- Login accordion -->
+        <login translate="label">
+          <label>Login</label>
+          <expanded>0</expanded>
+          <frontend_type>text</frontend_type>
+          <sort_order>40</sort_order>
+          <show_in_default>1</show_in_default>
+          <show_in_website>1</show_in_website>
+          <show_in_store>1</show_in_store>
+          <comment>If you have a Hivewyre account already, please enter your email password.  Click  “Get websites”  to get a list of your registered domains that you already added to the Hivewyre Market Insights platform. Choose ONLY websites that are Magento eCommerce sites. Once you have chosen the website to connect with the Market Insights extension, click “connect website” and your site will be connected. </comment>
+          <fields>
+            <email translate="label">
+              <label>E-mail</label>
+              <frontend_type>text</frontend_type>
+              <sort_order>10</sort_order>
+              <show_in_default>1</show_in_default>
+              <show_in_website>1</show_in_website>
+              <show_in_store>1</show_in_store>
+            </email>
+
+            <password translate="label">
+              <label>Password</label>
+              <frontend_type>password</frontend_type>
+              <sort_order>20</sort_order>
+              <show_in_default>1</show_in_default>
+              <show_in_website>1</show_in_website>
+              <show_in_store>1</show_in_store>
+              <comment><![CDATA[<button class="login" onclick="loginMerchant(); return false;" style="margin-left: 70px; height: 25px;"> Get Websites </button><div id="hivewyre-api-login-results"></div>]]></comment>
+            </password>
+
+            <website translate="label">
+              <label>Website</label>
+              <frontend_type>select</frontend_type>
+              <source_model>magentoconnector/config_websitesdropdown</source_model>
+              <sort_order>30</sort_order>
+              <show_in_default>1</show_in_default>
+              <show_in_website>1</show_in_website>
+              <show_in_store>1</show_in_store>
+              <comment>Please select a website to connect. <![CDATA[<input type="hidden" id="token"/><button class="connect " onclick="connectMerchant(); return false;" style="width: 89%; height: 30px;font-size: 16px;"> Connect Website </button><div id="hivewyre-api-connect-results"></div>]]></comment>
+            </website>
+          </fields>
+        </login>
+
+      </groups>
+    </hivewyre_settings>
+    
+    <!-- Dashbord (Iframe) -->
+    <hivewyre_iframe translate="label" module="magentoconnector" >
+      <label>Dashboard</label>
+      <tab>hivewyre_config</tab> <!-- Will be under "hivewyre_config" -->
+      <frontend_type>text</frontend_type>
+      <sort_order>2</sort_order>
+      <show_in_default>1</show_in_default>
+      <show_in_website>1</show_in_website>
+      <show_in_store>1</show_in_store>
+      <groups>
+          <info>
+            <frontend_model>magentoconnector/adminhtml_system_config_fieldset_info</frontend_model>
+            <sort_order>1</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>
+          </info>
+      </groups>
+    </hivewyre_iframe>
+  </sections>
+</config>

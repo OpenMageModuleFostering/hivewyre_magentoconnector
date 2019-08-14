@@ -1,0 +1,95 @@
+<?xml version="1.0"?>
+<package>
+    <name>Hivewyre_Magentoconnector</name>
+    <version>1.0.0</version>
+    <stability>stable</stability>
+    <license>Open Software License (OSL)</license>
+    <channel>community</channel>
+    <extends/>
+    <summary>The only analytics tool that measures consumers' interactions between your store and your competitors.</summary>
+    <description>Know your competitors. Know yourself.&#xD;
+&#xD;
+Compare your site's performance to your competitor's.&#xD;
+&#xD;
+&#xD;
+Compare your site's performance to your competitor's in real-time.&#xD;
+&#xD;
+Make sound business decisions without fear.&#xD;
+&#xD;
+Spend your marketing and advertising budget more effectively.&#xD;
+&#xD;
+&#xD;
+With a seamless installation process, you can have access to more consumer &#xD;
+&#xD;
+data than you ever thought possible -100% FREE.&#xD;
+&#xD;
+This is the only analytical tool out there that shows you how consumers &#xD;
+&#xD;
+are interacting with your Magento site and your competitors' sites. We &#xD;
+&#xD;
+ad over 100-million unique prospective customersmonthly to our data &#xD;
+&#xD;
+co-op, which gives you insights into your eCommerce business like never &#xD;
+&#xD;
+before.&#xD;
+&#xD;
+&#xD;
+What Is This Awesome Data We Have for You?&#xD;
+&#xD;
+With Market Insights, you have real data in real-time on the following:&#xD;
+&#xD;
+&#xD;
+&#xD;
+Awareness Rating - % of consumers in your segment that have visited &#xD;
+&#xD;
+your site for the past 7 days.&#xD;
+&#xD;
+Win Percentage - % of consumers that have visited your site and at &#xD;
+&#xD;
+least one other in your segment, but chose to purchase from you.&#xD;
+&#xD;
+Unique Users - Number of unique users in your segment.&#xD;
+&#xD;
+Top Cross Categories - Visitors within your segment also frequent &#xD;
+&#xD;
+these categories.&#xD;
+&#xD;
+Revenue Per Visitor - The revenue per visitor on your site.&#xD;
+&#xD;
+&#xD;
+&#xD;
+Know your competitors&#xD;
+&#xD;
+Knowledge is power. The knowledge Market Insights data will bring you is &#xD;
+&#xD;
+more informed, confident and shrewd businesses decisions than ever before, &#xD;
+&#xD;
+because for the first time you are seeing a much fuller picture of your &#xD;
+&#xD;
+business, your place in the segment you're in and how consumers within this &#xD;
+&#xD;
+segment are interacting with you and your competitors.&#xD;
+&#xD;
+&#xD;
+Get These Insights Quickly!&#xD;
+&#xD;
+You don't need to leave Magento to set up the Market Insights Extension.&#xD;
+&#xD;
+&#xD;
+We Want Your Feedback&#xD;
+&#xD;
+This is an exciting time for us at Hivewyre! We are proud of our Market &#xD;
+&#xD;
+Insights tool and how it will provide eCommerce owners with powerful data &#xD;
+&#xD;
+that they could never get for free anywhere else. Please reach out to us with &#xD;
+&#xD;
+any questions or comments (marketinsights@hivewyre.com).</description>
+    <notes>First release version.</notes>
+    <authors><author><name>Eduardo De Le&#xF3;n</name><user>edudeleon</user><email>edudeleon@gmail.com</email></author></authors>
+    <date>2016-03-09</date>
+    <time>23:07:07</time>
+    <contents><target name="magecommunity"><dir name="Hivewyre"><dir name="Magentoconnector"><dir name="Block"><file name="Abstract.php" hash="adc7e2f6141ab0dd4b29db84b2d472e1"/><dir name="Adminhtml"><dir name="System"><dir name="Config"><dir name="Fieldset"><file name="Ajaxcalls.php" hash="2932e500f6f51475cff25c4a19041860"/><file name="Info.php" hash="c4e4f2f8ae60f2f60de2d60b34bbc39a"/></dir></dir></dir></dir><file name="Conversion.php" hash="1c3958ae44860b67f81519927e1230ea"/><file name="Tracking.php" hash="62a065d82371ccf7f7be91c353183096"/></dir><dir name="Helper"><file name="Data.php" hash="de8586ce96a1c602c1e69a0905379e3f"/></dir><dir name="Model"><dir name="Api"><file name="Abstract.php" hash="bf52569972f63701097082369c63da61"/><file name="Accounts.php" hash="d9080eee843deea493d3f115bf496c5b"/></dir><dir name="Config"><file name="Segmentsdropdown.php" hash="ad859f5cd713d844d8f74dc1d714f327"/><file name="Websitesdropdown.php" hash="25cf17240801ef32ef322b8b0c9b4362"/></dir><file name="Config.php" hash="af4ea74087ed78d842cf5a3e4f7bc5ff"/></dir><dir name="controllers"><dir name="Adminhtml"><file name="MagentoconnectorController.php" hash="0a6ca352495c801fb1570e01aa3cef4a"/></dir></dir><dir name="etc"><file name="adminhtml.xml" hash="8005e62add10d1300131815e3a077059"/><file name="config.xml" hash="cf0e5fd5fd4bf35100c7cab095903c0a"/><file name="system.xml" hash="8f91a6466c222d28f04bfe725d10fc8a"/></dir><file name=".DS_Store" hash="84e2e7bcbcec035c3177e2293dcb81de"/></dir><file name=".DS_Store" hash="fc9bd4bdfae9485d49fb0c5e085e567c"/></dir></target><target name="mageetc"><dir name="modules"><file name="Hivewyre_Magentoconnector.xml" hash="a2a3bb2852cc51ab460e27b54188c838"/></dir></target><target name="magedesign"><dir name="frontend"><dir name="base"><dir name="default"><dir name="layout"><file name="hivewyre_magentoconnector.xml" hash="26436730ff1dc6b9cbe6d7c46b9273d1"/></dir><dir name="template"><dir name="hivewyre_magentoconnector"><file name="conversion.phtml" hash="c66ff182b12bd3b522d4a2ebfbdb6952"/><file name="tracking.phtml" hash="02b988afbcffae71d1f418ce4695bd3f"/></dir></dir></dir></dir></dir><dir name="adminhtml"><dir name="default"><dir name="default"><dir name="template"><dir name="hivewyre_magentoconnector"><dir name="system"><dir name="config"><dir name="fieldset"><file name="ajaxcalls.phtml" hash="26e576a12607b6438d71aab2b284f4ba"/><file name="info.phtml" hash="d2ce07862836bcd502ea285236792d8e"/></dir><file name=".DS_Store" hash="445b031dd16e4ede6ad536d3ebde8d3d"/></dir><file name=".DS_Store" hash="bfc3ba4e57655414cea516ff864d5d79"/></dir><file name=".DS_Store" hash="9098b70eecda801dd77538d307120880"/></dir></dir></dir></dir></dir></target></contents>
+    <compatible/>
+    <dependencies><required><php><min>5.3.0</min><max>7.0.0</max></php></required></dependencies>
+</package>

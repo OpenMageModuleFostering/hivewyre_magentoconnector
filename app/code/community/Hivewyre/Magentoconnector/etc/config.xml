@@ -1,0 +1,71 @@
+<?xml version="1.0" ?>
+<!--
+  /**
+ * Copyright © 2016 HiveWyre.com
+ * FileDescription: Module config file
+ * @autor eduedeleon
+ */
+-->
+
+<config>
+    <!-- modules node provides basic information about the module -->
+    <modules>
+        <!-- This node's name has to be the same as module's full name including namespace -->
+        <Hivewyre_Magentoconnector>
+            <!-- Current version of module -->
+            <version>1.0.0</version>
+        </Hivewyre_Magentoconnector>
+    </modules>
+
+    <frontend>
+
+        <!-- Extension Layout -->
+        <layout>
+            <updates>
+                <magentoconnector>
+                    <file>hivewyre_magentoconnector.xml</file>
+                </magentoconnector>
+            </updates>
+        </layout>
+    
+    </frontend> 
+
+    <!-- Global Section -->
+    <global>
+       
+        <!-- Helper declaration -->
+        <helpers>
+            <magentoconnector>
+                <class>Hivewyre_Magentoconnector_Helper</class>
+            </magentoconnector>
+        </helpers>
+
+        <!-- Model declaration -->
+        <models>
+            <magentoconnector>
+                <class>Hivewyre_Magentoconnector_Model</class>
+            </magentoconnector>
+        </models>
+
+        <!-- Blocks declaration -->
+        <blocks>
+            <magentoconnector>
+                <class>Hivewyre_Magentoconnector_Block</class>
+            </magentoconnector>
+        </blocks>
+
+    </global>
+
+    <!-- Admin Panel Controller -->
+    <admin>
+        <routers>
+            <adminhtml>
+                <args>
+                    <modules>
+                        <Hivewyre_Magentoconnector before="Mage_Adminhtml">Hivewyre_Magentoconnector_Adminhtml</Hivewyre_Magentoconnector>
+                    </modules>
+                </args>
+            </adminhtml>
+        </routers>
+    </admin>   
+</config>

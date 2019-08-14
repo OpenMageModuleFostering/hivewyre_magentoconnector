@@ -1,0 +1,210 @@
+<script type="text/javascript">
+
+    /**
+     * Get Dropdown segments (Ajax Call)
+     * @return {[type]}
+     * @author edudeleon
+     * @date   2016-02-09
+     */
+    function getDropdownSegments() {
+        var request = new Ajax.Request('<?php echo $this->getUrl('adminhtml/magentoconnector/getSegments'); ?>', {
+            method: 'get',
+            onSuccess: function(result) {
+            	
+                var options = result.responseJSON;
+                if(options.length !== 0){
+    	            for(var k in options){
+    					var x        = document.getElementById("hivewyre_settings_registration_segment");
+    					var option   = document.createElement("option");
+    					option.value = k;
+    					option.text  = options[k];
+    					x.add(option);
+    	            }
+                }
+            }
+        });
+    }
+
+    /**
+     * Gets the params from the Registration section and makes an Ajax call to register the Merchant
+     * @return {[type]}
+     * @author edudeleon
+     * @date   2016-02-09
+     */
+    function registerMerchant(){
+        var request = new Ajax.Request('<?php echo $this->getUrl('adminhtml/magentoconnector/registerMerchant'); ?>', {
+            method: 'get',
+            parameters: {
+                email:  document.getElementById('hivewyre_settings_registration_email').value,
+                website: document.getElementById('hivewyre_settings_registration_website_name').value,
+                segment: document.getElementById('hivewyre_settings_registration_segment').value,
+                password: document.getElementById('hivewyre_settings_registration_password').value,
+            },
+
+            onCreate: function() {
+                document.getElementById('hivewyre-api-register-results').innerHTML = '';
+            },
+
+            onSuccess: function(result) {
+
+                if(!result.responseJSON.success){
+                    var message = '<ul class = "messages">'+'<li class="error-msg">'+result.responseJSON.msg+'</li>'+'</ul>';
+                    document.getElementById('hivewyre-api-register-results').innerHTML = message;
+ 
+                } else {
+                    //Set Site ID
+                    $('hivewyre_settings_general_siteid').value = result.responseJSON.site_id;
+
+                    //Set Website Name
+                    $('hivewyre_settings_general_connected_website').value = document.getElementById('hivewyre_settings_registration_website_name').value;
+                    
+                    //Submit Form
+                    configForm.submit();  
+                }
+            }
+        });
+
+        return false;
+    }
+
+    /**
+     * Login merchant and list the available websites
+     * @return {[type]}
+     * @author edudeleon
+     * @date   2016-02-19
+     */
+    function loginMerchant(){
+         var request = new Ajax.Request('<?php echo $this->getUrl('adminhtml/magentoconnector/loginMerchant'); ?>', {
+            method: 'get',
+            parameters: {
+                email:      document.getElementById('hivewyre_settings_login_email').value,
+                password:   document.getElementById('hivewyre_settings_login_password').value,
+            },
+            onCreate: function() {
+                document.getElementById('hivewyre-api-login-results').innerHTML = "";
+            },
+            onSuccess: function(result) {
+
+                if(!result.responseJSON.success){
+                    var message = '<ul class = "messages">'+'<li class="error-msg">'+result.responseJSON.msg+'</li>'+'</ul>';
+                    document.getElementById('hivewyre-api-login-results').innerHTML = message;
+                    
+                } else {
+                    //clear any msg
+                    document.getElementById('hivewyre-api-login-results').innerHTML = "";
+
+                    //Clear select options
+                    $('hivewyre_settings_login_website').select('option').invoke('remove');
+
+                    //Set token value
+                    document.getElementById('token').value = result.responseJSON.token;
+                    var websites = result.responseJSON.sites;
+
+                    if(websites.length !== 0){
+                        for(var k in websites){
+                            var x        = document.getElementById("hivewyre_settings_login_website");
+                            var option   = document.createElement("option");
+
+                            var option_text = websites[k];
+                            option.value = k;
+                            option.text  = option_text;
+
+                            if(!(option_text.search("Magento.com") != -1 || option_text.search("Not Connected") != -1)){
+                                option.disabled  = true;
+                            }
+
+                            x.add(option);
+                        }
+                    } else {
+                        var message = '<ul class = "messages">'+'<li class="error-msg">'+"There are no domains available for this account."+'</li>'+'</ul>';
+                        document.getElementById('hivewyre-api-login-results').innerHTML = message;
+                    }
+
+                }
+            }
+        });
+
+        return false;  
+    }
+
+    /**
+     * Connect Magento Store with Hivewyre
+     * @return {[type]}
+     * @author edudeleon
+     * @date   2016-02-19
+     */
+    function connectMerchant(){
+        //Site ID
+        var website_select  = document.getElementById('hivewyre_settings_login_website');
+        var site_id         = website_select.value;
+        if(!site_id || site_id == 0){
+            alert("You need to select a website to connect.");
+            return false;
+        }
+        var website_name    = website_select.options[website_select.selectedIndex].text; 
+
+        
+        //Connect Site
+        var request = new Ajax.Request('<?php echo $this->getUrl('adminhtml/magentoconnector/connectMerchant'); ?>', {
+            method: 'get',
+            parameters: {
+                domain_id:  site_id,
+                token:      document.getElementById('token').value,
+                rap:        '<?php echo Hivewyre_Magentoconnector_Model_Config::MAGENTO_RAP?>'
+            },
+
+            onCreate: function() {
+                document.getElementById('hivewyre-api-connect-results').innerHTML = '';
+            },
+
+            onSuccess: function(result) {
+                //If fail
+                if(!result.responseJSON.success){
+                    var message = '<ul class = "messages">'+'<li class="error-msg">'+result.responseJSON.msg+'</li>'+'</ul>';
+                    document.getElementById('hivewyre-api-connect-results').innerHTML = message;
+ 
+                //Successfull connection
+                } else {
+                    //Set Site ID
+                    $('hivewyre_settings_general_siteid').value = result.responseJSON.site_id;
+                    
+                    //Set Website Name
+                    website_name = website_name.replace("(Connected to Magento.com)", "");
+                    website_name = website_name.replace("(Not Connected)", "");
+                    $('hivewyre_settings_general_connected_website').value = website_name;
+                    
+                    //Submit Form
+                    configForm.submit();
+                }
+            }
+        });
+
+        return false;
+    }
+
+    /**
+     * Set website name
+     * @author edudeleon
+     * @date   2016-02-25
+     */
+    function setWebisteName(){
+        var website_name = document.getElementById('hivewyre_settings_registration_website_name').value;
+        if(!website_name){
+            $('hivewyre_settings_registration_website_name').value = window.location.hostname;
+        }
+    }
+
+    document.observe("dom:loaded", function() {
+        //Get segments onload
+		getDropdownSegments();
+
+        //Set sitename if empty
+        setWebisteName();
+    
+        // Disable Site Id and Connected fields
+        $('hivewyre_settings_general_siteid').setAttribute('readonly','readonly');
+        $('hivewyre_settings_general_siteid').addClassName('disabled');
+        $('hivewyre_settings_general_connected_website').setAttribute('readonly','readonly');
+        $('hivewyre_settings_general_connected_website').addClassName('disabled');
+	});
+</script>
