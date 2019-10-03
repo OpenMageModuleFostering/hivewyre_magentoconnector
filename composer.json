@@ -1,16 +1,19 @@
 {
-    "name": "OpenMageModuleFostering/Hivewyre_Magentoconnector",
+    "name": "OpenMageModuleFostering\/Hivewyre_Magentoconnector",
     "type": "magento-module",
     "license": "Open-Software-License-(OSL)",
     "homepage": "",
     "description": "The only analytics tool that measures consumers' interactions between your store and your competitors.",
     "authors": [
-    {
-        "name": "Eduardo De Le\u00f3n",
-        "email": "edudeleon@gmail.com"
-    }
-],
+        {
+            "name": "Eduardo De Le\u00f3n",
+            "email": "edudeleon@gmail.com"
+        }
+    ],
     "suggest": {
-        "magento-hackathon/magento-composer-installer": "*"
-    }
+        "magento-hackathon\/magento-composer-installer": "*"
+    },
+    "keywords": [
+        "openmage-module"
+    ]
 }
