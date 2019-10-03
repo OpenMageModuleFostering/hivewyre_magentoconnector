@@ -1,7 +1,7 @@
 {
-    "name": "OpenMageModuleFostering\/Hivewyre_Magentoconnector",
+    "name": "openmage-module-fostering\/hivewyre_magentoconnector",
     "type": "magento-module",
-    "license": "Open-Software-License-(OSL)",
+    "license": "OSL-3.0",
     "homepage": "",
     "description": "The only analytics tool that measures consumers' interactions between your store and your competitors.",
     "authors": [
